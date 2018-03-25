@@ -30,6 +30,11 @@ public class Phone extends Characteristics implements PriceAndYear {
     }
 
     @Override
+    public Fabricator getFabricator() {
+        return fabricator;
+    }
+
+    @Override
     public String toString() {
         return "Phone{" +
                 "name = " + name +

@@ -30,7 +30,11 @@ public class Monitor extends Characteristics implements PriceAndYear {
     }
 
     @Override
+    public Fabricator getFabricator() {
+        return fabricator;
+    }
 
+    @Override
     public String toString() {
         return "Monitor{" +
                 "name = " + name +

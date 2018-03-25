@@ -30,6 +30,11 @@ public class Laptop extends Characteristics implements PriceAndYear {
     }
 
     @Override
+    public Fabricator getFabricator() {
+        return fabricator;
+    }
+
+    @Override
     public String toString() {
         return "Laptop{" +
                 "name = " + name +

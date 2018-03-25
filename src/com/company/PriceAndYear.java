@@ -4,4 +4,5 @@ public interface PriceAndYear {
 
     double getPrice();
     int getYearOfManufacture();
+    Fabricator getFabricator();
 }

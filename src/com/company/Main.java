@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Main{
+public class Main {
 
     public static void main(String[] args) throws IOException {
 
@@ -66,19 +66,10 @@ public class Main{
         }
         System.out.println("==============================================================================================================");
 
-        List<Object> assortmentList = new ArrayList<>();
-
-        for (int i = 0; i < phoneList.size(); i++) {
-            assortmentList.add(phoneList.get(i));
-        }
-
-        for (int i = 0; i < laptopList.size(); i++) {
-            assortmentList.add(laptopList.get(i));
-        }
-
-        for (int i = 0; i < monitorList.size(); i++) {
-            assortmentList.add(monitorList.get(i));
-        }
+        List<PriceAndYear> assortmentList = new ArrayList<>();
+        assortmentList.addAll(phoneList);
+        assortmentList.addAll(laptopList);
+        assortmentList.addAll(monitorList);
 
         System.out.println("The assortment of online store:");
         System.out.println();
@@ -89,20 +80,95 @@ public class Main{
         System.out.println();
         System.out.println("How do you want to sort an assortment?");
         System.out.println("By price (press 1)");
-        System.out.println("By price - inverce (press 2)");
+        System.out.println("By price - inverse (press 2)");
         System.out.println("By date of manufacture (press 3)");
         System.out.println("By fabricator (press 4)");
 
+        try {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String inputString = input.readLine();
 
-//        if(Integer.parseInt(inputString) == 1) {
-//            Collections.sort(assortmentList, new Comparator<PriceAndYear>() {
-//                @Override
-//                public int compare(PriceAndYear o1, PriceAndYear o2) {
-//                    return Double.compare(o1.getPrice(), o2.getPrice());
-//                }
-//            });
-//        }
+        if (Integer.parseInt(inputString) == 1) {
+            Collections.sort(assortmentList, new Comparator<PriceAndYear>() {
+                @Override
+                public int compare(PriceAndYear o1, PriceAndYear o2) {
+                    return Double.compare(o1.getPrice(), o2.getPrice());
+                }
+            });
+            System.out.println("SORT BY PRICE");
+            for (int i = 0; i < assortmentList.size(); i++) {
+                System.out.println(assortmentList.get(i).toString());
+            }
+        } else if (Integer.parseInt(inputString) == 2) {
+            Collections.sort(assortmentList, new Comparator<PriceAndYear>() {
+                @Override
+                public int compare(PriceAndYear o1, PriceAndYear o2) {
+                    return Double.compare(o2.getPrice(), o1.getPrice());
+                }
+            });
+            System.out.println("SORT BY PRICE - INVERSE");
+            for (int i = 0; i < assortmentList.size(); i++) {
+                System.out.println(assortmentList.get(i).toString());
+            }
+        } else if (Integer.parseInt(inputString) == 3) {
+            Collections.sort(assortmentList, new Comparator<PriceAndYear>() {
+                @Override
+                public int compare(PriceAndYear o1, PriceAndYear o2) {
+                    return Integer.compare(o1.getYearOfManufacture(), o2.getYearOfManufacture());
+                }
+            });
+            System.out.println("SORT BY DATE OF MANUFACTURE");
+            for (int i = 0; i < assortmentList.size(); i++) {
+                System.out.println(assortmentList.get(i).toString());
+            }
+        } else if (Integer.parseInt(inputString) == 4) {
+                System.out.println("Choose the manufacturer");
+                System.out.println("Sony (press 1)");
+                System.out.println("Lenovo (press 2)");
+                System.out.println("Xiaomi (press 3)");
+                System.out.println("Samsung (press 4)");
+                System.out.println("HP (press 5)");
+            String inputStringChoose = input.readLine();
+            if (Integer.parseInt(inputStringChoose) == 1) {
+                for (int i = 0; i < assortmentList.size(); i++) {
+                    if (assortmentList.get(i).getFabricator() == Fabricator.sony) {
+                        System.out.println(assortmentList.get(i));
+                    }
+                }
+            } else if (Integer.parseInt(inputStringChoose) == 2) {
+                for (int i = 0; i < assortmentList.size(); i++) {
+                    if (assortmentList.get(i).getFabricator() == Fabricator.lenovo) {
+                        System.out.println(assortmentList.get(i));
+                    }
+                }
+            }else if (Integer.parseInt(inputStringChoose) == 3) {
+                for (int i = 0; i < assortmentList.size(); i++) {
+                    if (assortmentList.get(i).getFabricator() == Fabricator.xiaomi) {
+                        System.out.println(assortmentList.get(i));
+                    }
+                }
+            } else if (Integer.parseInt(inputStringChoose) == 4) {
+                for (int i = 0; i < assortmentList.size(); i++) {
+                    if (assortmentList.get(i).getFabricator() == Fabricator.samsung) {
+                        System.out.println(assortmentList.get(i));
+                    }
+                }
+            } else if (Integer.parseInt(inputStringChoose) == 5) {
+                for (int i = 0; i < assortmentList.size(); i++) {
+                    if (assortmentList.get(i).getFabricator() == Fabricator.hp) {
+                        System.out.println(assortmentList.get(i));
+                    }
+                }
+            }
+            else {
+                System.out.println("You did not make you choose.");
+            }
+        }
+        else {
+            System.out.println("You did not make you choose.");
+        }
+    } catch (NumberFormatException e) {
+            System.out.println("You did not make you choose.");
+        }
     }
 }
