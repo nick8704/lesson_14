@@ -1,6 +1,6 @@
 package com.company;
 
-public class Characteristics {
+public abstract class Characteristics {
 
     protected String name;
     protected double price;

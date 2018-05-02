@@ -97,6 +97,7 @@ public class Main {
         System.out.println("By price - inverse (press 2)");
         System.out.println("By date of manufacture (press 3)");
         System.out.println("By fabricator (press 4)");
+        // test comment
 
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
